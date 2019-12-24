@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/Users/michaelpatterson/anaconda3/envs/advbeg_env/bin/python",
+    "python.formatting.provider": "autopep8"
+}
