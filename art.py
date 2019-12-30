@@ -3,7 +3,7 @@ import numpy as np
 
 
 def create_matrix(image):
-    image.thumbnail((300, 400))
+    image.thumbnail((1000, 200))
     # image.show()
     print(f'Thumbnail size: {image.size}')
     pixel_data = list(image.getdata())
@@ -23,9 +23,9 @@ def convert_brightness(pixel_matrix):
             new_bright_row.append(round(sum(pixel)/len(pixel)))
         # print(bright_row)
         bright_matrix.append(new_bright_row)
-    print(bright_matrix)
+    # print(bright_matrix)
 
-    print("successfully created brightnenss matrix!")
+    #print("successfully created brightnenss matrix!")
     # print(
     # f'Brightness matrix size: {len(bright_row)} x {len(bright_matrix)} ')
     return bright_matrix
@@ -43,6 +43,15 @@ def convert_ascii(brightness_matrix):
     return ascii_matrix
 
 
+def print_ascii(ascii_matrix):
+    ascii_pic = []
+    for row in ascii_matrix:
+        ascii_row = [char+char+char for char in row]
+        print(''.join(ascii_row))
+
+    return
+
+
 with open('Photos/grier_cat.jpeg', 'rb') as fp:
     img = Image.open(fp)
 
@@ -51,6 +60,6 @@ with open('Photos/grier_cat.jpeg', 'rb') as fp:
 
     # print(list(img.getdata()))
     # print(pixel_array)
-    array = convert_brightness(create_matrix(img))
-
-    print(convert_ascii(array)[0])
+    bright_array = convert_brightness(create_matrix(img))
+    ascii_array = convert_ascii(bright_array)
+    print_ascii(ascii_array)
