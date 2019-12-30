@@ -1,3 +1,5 @@
+# Reprint an image using ASCII characters
+
 from PIL import Image
 import numpy as np
 
@@ -10,8 +12,6 @@ def create_matrix(image):
     # convert to a grid format or 2D array
     pixel_matrix = [pixel_data[i:i+image.width]
                     for i in range(0, len(pixel_data), image.width)]
-    # print('Successfully constructed pixel matrix: ')
-    # print(f'Pixel matrix size: {len(pixel_matrix[0])} x {len(pixel_matrix)}')
     return pixel_matrix
 
 
@@ -24,10 +24,6 @@ def convert_brightness(pixel_matrix):
         # print(bright_row)
         bright_matrix.append(new_bright_row)
     # print(bright_matrix)
-
-    #print("successfully created brightnenss matrix!")
-    # print(
-    # f'Brightness matrix size: {len(bright_row)} x {len(bright_matrix)} ')
     return bright_matrix
 
 
@@ -48,16 +44,13 @@ def print_ascii(ascii_matrix):
     for row in ascii_matrix:
         ascii_row = [char+char+char for char in row]
         print(''.join(ascii_row))
-
     return
 
 
 with open('Photos/grier_cat.jpeg', 'rb') as fp:
     img = Image.open(fp)
-
-    print('Successfully loaded image!')
-    print('Image Size: ', img.size)
-
+    #print('Successfully loaded image!')
+    #print('Image Size: ', img.size)
     # print(list(img.getdata()))
     # print(pixel_array)
     bright_array = convert_brightness(create_matrix(img))
